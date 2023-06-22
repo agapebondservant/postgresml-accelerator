@@ -1,0 +1,47 @@
+accelerator:
+  displayName: PostgresML Accelerator
+  description: Template for deploying a PostgresML-enabled Postgres instance to a Kubernetes cluster or TAP
+  iconUrl: https://postgresml.org/dashboard/static/images/owl_gradient.svg
+  tags:
+  - "ML"
+  - "AI"
+  - "machinelearning"
+  - "datascience"
+  - "MLOps"
+  - "artificialintelligence"
+  - "postgresml"
+  - "postgres"
+  - "LLM"
+  - "huggingface"
+  - "transformers"
+options:
+  - name: postgresml_ns
+    inputType: text
+    display: true
+    label: 'Namespace'
+    defaultValue: Required
+  - name: postgresml_pw
+    inputType: text
+    display: true
+    label: 'Password (will be saved to .env file)'
+    defaultValue: Required
+  - name: postgresml_db
+    inputType: text
+    display: true
+    label: 'Database Name'
+    defaultValue: Required
+engine:
+  type: Merge
+  sources:
+    - type: Chain
+      transformations:
+        - type: Include
+          patterns: ['**']
+        - type: ReplaceText
+          substitutions:
+            - text: REPLACE_DATA_E2E_POSTGRESML_NS
+              with: "#postgresml_ns"
+            - text: REPLACE_DATA_E2E_BITNAMI_AUTH_PASSWORD
+              with: "#postgresml_pw"
+            - text: REPLACE_DATA_E2E_BITNAMI_AUTH_DATABASE
+              with: "#postgresml_db"
