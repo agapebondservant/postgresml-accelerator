@@ -17,7 +17,26 @@ tanzu acc create postgresml --git-repository https://github.com/agapebondservant
 ```
 
 ## Contents
-1. [Deploy Bitnami Postgres on Kubernetes<a name](#pgbitnami)
+1. [Overview](#overview)
+2. [Deploy Bitnami Postgres on Kubernetes<a name](#pgbitnami)
+
+### Overview<a name="overview"/>
+User-Defined Functions
+- **run_llm_inference_task**: Invokes a HuggingFace pipeline using _postgresml_
+  - Parameters:
+  - _question_: Input prompt
+  - _task_: HuggingFace task (summarization, question-answering, feature-extraction etc)
+  - _task_model_: Large Language Model from public or private HuggingFace repository
+  - _use_topk_: Flag indicating whether to use only the top k embedding chunks for the query
+  - Returns: (Table object)
+  - _Matched document link_
+  - _Query result_ 
+- **generate_batch_embeddings**: Generates and stores embeddings from a preconfigured datasource using _pgvector_
+  - Parameters:
+  - _N/A_
+  - Returns:
+  - _N/A_
+
 
 ### Deploy Bitnami Postgres on Kubernetes<a name="pgbitnami"/>
 #### Prequisites:
