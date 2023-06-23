@@ -30,7 +30,12 @@ User-Defined Functions
   - _use_topk_: Flag indicating whether to use only the top k embedding chunks for the query
   - Returns: (Table object)
   - _Matched document link_
-  - _Query result_ 
+  - _Query result_
+- **run_semantic_search**: Performs semantic search using _pgvector_
+  - Parameters:
+  - _input_: Input prompt
+  - Returns: (Table object)
+  - _Query result_
 - **generate_batch_embeddings**: Generates and stores embeddings from a preconfigured datasource using _pgvector_
   - Parameters:
   - _N/A_
